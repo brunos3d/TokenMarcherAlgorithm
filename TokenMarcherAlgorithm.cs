@@ -8,16 +8,15 @@
 private static List<string> Tokenize(string text)
 {
     List<string> tokens = new List<string>();
-    List<char> chars = text.ToList();
     StringBuilder buffer = new StringBuilder();
-    for (int i = 0; i < chars.Count; i++)
+    for (int i = 0; i < text.Length; i++)
     {
-        if (char.IsLetterOrDigit(chars[i])) { buffer.Append(chars[i]); }
+        if (char.IsLetterOrDigit(text[i])) { buffer.Append(text[i]); }
         else
         {
             if (buffer.Length != 0) { tokens.Add(buffer.ToString()); buffer.Clear(); }
             // Here you can define a custom pattern using a character array.
-            if (chars[i] != ' ') { tokens.Add(chars[i].ToString()); }
+            if (text[i] != ' ') { tokens.Add(text[i].ToString()); }
         }
     }
     if (buffer.Length != 0) { tokens.Add(buffer.ToString()); }
